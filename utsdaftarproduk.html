@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daftar Produk</title>
+    <link rel="stylesheet" href="tampilan.css">
+</head>
+<body>
+
+<h1>Daftar Produk</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nama Produk</th>
+            <th>Harga</th>
+            <th>Jumlah</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody id="list-produk"></tbody>
+</table>
+
+<br>
+<a href="utskeranjang.php">Lihat Keranjang</a>
+
+<script>
+
+// === Daftar Produk (bisa tambah sampai 100 produk) ===
+const produk = [
+    { id: 1, nama: "Kopi Latte", harga: 20000 },
+    { id: 2, nama: "friedchicken", harga: 25000 },
+    { id: 3, nama: "Espresso", harga: 15000 },
+    { id: 4, nama: "Americano", harga: 18000 },
+    { id: 5, nama: "Mocha", harga: 27000 },
+    { id: 6, nama: "Matcha Latte", harga: 28000 },
+    { id: 7, nama: "Caramel Macchiato", harga: 30000 },
+    { id: 8, nama: "nasi goreng", harga: 29000 },
+    { id: 9, nama: "Chocolate", harga: 22000 },
+    { id: 10, nama: "pisang keju", harga: 26000 }
+];
+
+// === Generate HTML otomatis ===
+let tbody = document.getElementById("list-produk");
+
+produk.forEach(p => {
+    tbody.innerHTML += `
+        <tr>
+            <td>${p.nama}</td>
+            <td>Rp ${p.harga.toLocaleString()}</td>
+            <td><input type="number" id="j${p.id}" value="1" min="1"></td>
+            <td><button onclick="tambah(${p.id})">Tambah</button></td>
+        </tr>
+    `;
+});
+
+function tambah(id) {
+    let jumlah = document.getElementById("j" + id).value;
+
+    let form = document.createElement("form");
+    form.method = "POST";
+    form.action = "utskeranjang.php";
+
+    form.innerHTML = `
+        <input type="hidden" name="aksi" value="tambah">
+        <input type="hidden" name="id" value="${id}">
+        <input type="hidden" name="jumlah" value="${jumlah}">
+    `;
+
+    document.body.appendChild(form);
+    form.submit();
+}
+
+</script>
+
+</body>
+</html>
