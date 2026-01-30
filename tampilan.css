@@ -1,0 +1,58 @@
+/* Body background & font */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f5efe6; /* cream vintage */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container form */
+.login-container {
+    background-color: #6b4f3b; /* coklat hangat */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    color: #fff;
+    width: 300px;
+    text-align: center;
+}
+
+/* Judul */
+.login-container h2 {
+    margin-bottom: 25px;
+    font-family: 'Georgia', serif;
+    letter-spacing: 1px;
+}
+
+/* Input fields */
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Button */
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #a67c52; /* coklat muda */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.login-container button:hover {
+    background-color: #d2b48c; /* highlight coklat vintage */
+}
+
+/* Placeholder */
+input::placeholder {
+    color: #f0e5d8;
+}
